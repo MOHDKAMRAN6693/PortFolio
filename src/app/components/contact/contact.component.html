@@ -1,19 +1,66 @@
-<section id="contact" class="my-5">
-  <h2 class="text-center">Contact</h2>
-  <form class="text-center">
-    <div class="mb-3">
-      <input type="text" class="form-control" placeholder="Your Name" />
-    </div>
-    <div class="mb-3">
-      <input type="email" class="form-control" placeholder="Your Email" />
-    </div>
-    <div class="mb-3">
-      <textarea
-        class="form-control"
-        rows="5"
-        placeholder="Your Message"
-      ></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+<section id="contact" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Contact Me</h2>
+
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          formControlName="name"
+          />
+          <!-- [ngClass]="{ 'is-invalid': submitted && contactForm.controls.name.errors }" -->
+        <!-- <div *ngIf="submitted && contactForm.controls.name.errors" class="invalid-feedback">
+          <div *ngIf="contactForm.controls.name.errors.['required']">Name is required</div>
+        </div> -->
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          formControlName="email"
+          />
+          <!-- [ngClass]="{ 'is-invalid': submitted && contactForm.controls.email.errors }" -->
+        <!-- <div *ngIf="submitted && contactForm.controls.email.errors" class="invalid-feedback">
+          <div *ngIf="contactForm.controls.email.errors?.['required']">Email is required</div>
+          <div *ngIf="contactForm.controls.email.errors.email">Email is invalid</div>
+        </div> -->
+      </div>
+
+      <div class="mb-3">
+        <label for="subject" class="form-label">Subject</label>
+        <input
+          type="text"
+          id="subject"
+          class="form-control"
+          formControlName="subject"
+          />
+          <!-- [ngClass]="{ 'is-invalid': submitted && contactForm.controls.subject.errors }" -->
+        <!-- <div *ngIf="submitted && contactForm.controls.subject.errors" class="invalid-feedback">
+          <div *ngIf="contactForm.controls.subject.errors?.['required']">Subject is required</div>
+        </div> -->
+      </div>
+
+      <div class="mb-3">
+        <label for="message" class="form-label">Message</label>
+        <textarea
+          id="message"
+          class="form-control"
+          rows="4"
+          formControlName="message"
+          ></textarea>
+          <!-- [ngClass]="{ 'is-invalid': submitted && contactForm.controls.message.errors }" -->
+        <!-- <div *ngIf="submitted && contactForm.controls.message.errors" class="invalid-feedback">
+          <div *ngIf="contactForm.controls.message.errors?.['required']">Message is required</div>
+        </div> -->
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Send Message</button>
+    </form>
+  </div>
 </section>
