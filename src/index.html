@@ -7,41 +7,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css" />
   <link rel="icon" type="image/x-icon" href="assets/img/logo.jpg">
+  <style>
+    /* Place your inline styles here if needed */
+  </style>
 </head>
 <body>
   <app-root></app-root>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
-<script>
-  // Initialize AOS
-  AOS.init({
-    duration: 1000, // Animation duration
-  });
 
-  // Function to animate progress bars
-  const animateProgressBars = () => {
-    const progressBars = document.querySelectorAll('.progress-bar');
-    progressBars.forEach((bar) => {
-      const width = bar.getAttribute('aria-valuenow');
-      bar.style.width = width + '%';
-    });
-  };
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js" defer></script>
+  <script>
+    // Initialize AOS
+    document.addEventListener('DOMContentLoaded', () => {
+      AOS.init({ duration: 1000 }); // Animation duration
 
-  // Event listener to trigger animation when scrolling to skills section
-  document.addEventListener('DOMContentLoaded', () => {
-    const skillsSection = document.getElementById('skills');
+      // Function to animate progress bars
+      const animateProgressBars = () => {
+        const progressBars = document.querySelectorAll('.progress-bar');
+        progressBars.forEach((bar) => {
+          const width = bar.getAttribute('aria-valuenow');
+          bar.style.width = width + '%';
+        });
+      };
 
-    // Intersection Observer to detect when skills section is in view
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateProgressBars();
-          observer.disconnect(); // Stop observing after the animation
-        }
+      // Event listener to trigger animation when scrolling to skills section
+      const skillsSection = document.getElementById('skills');
+
+      // Intersection Observer to detect when skills section is in view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateProgressBars();
+            observer.disconnect(); // Stop observing after the animation
+          }
+        });
       });
-    });
 
-    observer.observe(skillsSection);
-  });
-</script>
+      if (skillsSection) {
+        observer.observe(skillsSection);
+      }
+
+      // Initialize Typed.js
+      const typedOptions = {
+        strings: ["Designer", "Developer", "Guitarist", "Musician"],
+        typeSpeed: 50,
+        backSpeed: 50,
+        loop: true
+      };
+      new Typed('.typed', typedOptions);
+    });
+  </script>
+</body>
 </html>
