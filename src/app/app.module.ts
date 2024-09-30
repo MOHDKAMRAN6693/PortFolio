@@ -13,6 +13,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { EducationComponent } from './components/education/education.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'; 
 
 @NgModule({
   declarations: [
@@ -25,14 +26,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     ExperienceComponent,
     ProjectsComponent,
     EducationComponent,
-    ContactComponent
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     ReactiveFormsModule,
-    // HttpClientModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
