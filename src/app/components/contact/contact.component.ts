@@ -32,7 +32,7 @@ export class ContactComponent {
     const formData = this.contactForm.value;
 
     this.http
-      .post('https://your-backend-url.com/send-email', formData)
+      .post('http://localhost:3000/send-email', formData)
       .pipe(
         catchError((error) => {
           console.error('Error occurred while sending email:', error);
