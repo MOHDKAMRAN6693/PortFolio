@@ -1,3 +1,4 @@
+<!-- Main Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
   <div class="container-fluid">
     <!-- Navbar Brand with AOS -->
@@ -5,13 +6,14 @@
       <img src="/assets/img/logo.jpg" alt="Logo" class="logo">
     </a>
 
-    <!-- Hamburger Menu Button -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Hamburger Menu Button for Mobile (visible on smaller screens) -->
+    <button class="navbar-toggler d-lg-none" type="button" (click)="toggleSidebar()">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Navbar Links -->
-    <div class="collapse navbar-collapse" id="navbarNav">
+
+    <!-- Navbar Links for desktop view (visible on larger screens) -->
+    <div class="collapse navbar-collapse d-none d-lg-block" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <a class="nav-link" href="#about-me" data-aos="fade-left" data-aos-duration="1000">About Me</a>
@@ -35,3 +37,42 @@
     </div>
   </div>
 </nav>
+
+<!-- Sidebar for mobile and tablet view with icons -->
+<div class="sidebar" [ngClass]="{'active': isSidebarOpen}">
+  <ul class="sidebar-nav">
+    <li class="nav-item">
+      <a class="nav-link" (click)="scrollToSection('about-me')">
+        <i class="fas fa-user"></i> About Me
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="scrollToSection('skills')">
+        <i class="fas fa-code"></i> Skills
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="scrollToSection('experience')">
+        <i class="fas fa-briefcase"></i> Experience
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="scrollToSection('projects')">
+        <i class="fas fa-tasks"></i> Projects
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="scrollToSection('education')">
+        <i class="fas fa-graduation-cap"></i> Education
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="scrollToSection('contact')">
+        <i class="fas fa-envelope"></i> Contact
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- Sidebar overlay -->
+<div class="sidebar-overlay" [ngClass]="{'active': isSidebarOpen}" (click)="toggleSidebar()"></div>

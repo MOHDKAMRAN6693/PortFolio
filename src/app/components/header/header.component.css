@@ -8,3 +8,77 @@
 .navbar {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+/* Sidebar styling */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #1e1e2d;
+  overflow-y: auto;
+  transition: left 0.3s ease;
+  z-index: 1050;
+  padding-top: 1rem;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* When sidebar is active */
+.sidebar.active {
+  left: 0;
+}
+
+/* Sidebar items */
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-nav .nav-item {
+  margin: 15px 0;
+}
+
+.sidebar-nav .nav-link {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  padding: 10px 15px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+/* Add icons next to the text */
+.sidebar-nav .nav-link i {
+  margin-right: 10px;
+  font-size: 1.3rem;
+}
+
+/* Hover effect on sidebar links */
+.sidebar-nav .nav-link:hover {
+  background-color: #343a40;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Active link styling */
+.sidebar-nav .nav-link.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+
+/* Show the navbar links on larger screens */
+@media (min-width: 992px) {
+  .navbar-collapse {
+    display: flex !important;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .sidebar-overlay {
+    display: none;
+  }
+}
